@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Baza_Danych" Class="Baza_Danych_LINQDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Baza_Danych.mdf;Integrated Security=True" SettingsObjectName="Rezerwacja_Hotelowa_LINQ.Properties.Settings" SettingsPropertyName="Baza_DanychConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Klient" Member="Klients">
+    <Type Name="Klient">
+      <Column Name="id_klienta" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="imie" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="nazwisko" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="adres_zamieszkania" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="numer_karty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="login" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="haslo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Klient_Rezerwacja" Member="Rezerwacjas" ThisKey="id_klienta" OtherKey="id_klienta" Type="Rezerwacja" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Klient_Pokoj" Member="Klient_Pokojs">
+    <Type Name="Klient_Pokoj">
+      <Column Name="id_klienta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_pokoju" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Pokoj_Klient_Pokoj" Member="Pokoj" ThisKey="id_pokoju" OtherKey="id_pokoju" Type="Pokoj" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Rezerwacja_Klient_Pokoj" Member="Rezerwacja" ThisKey="id_klienta" OtherKey="id_klienta" Type="Rezerwacja" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pokoj" Member="Pokojs">
+    <Type Name="Pokoj">
+      <Column Name="id_pokoju" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pojemnosc" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="wyposarzenie" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="stan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="cena_pokoju" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="rezerwacja_od" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="rezerwacja_do" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Pokoj_Klient_Pokoj" Member="Klient_Pokojs" ThisKey="id_pokoju" OtherKey="id_pokoju" Type="Klient_Pokoj" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pracownicy" Member="Pracownicies">
+    <Type Name="Pracownicy">
+      <Column Name="id_pracownika" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="login" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="haslo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="imie" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="nazwisko" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="poziom_uprawnien" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data_logowania" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Pracownicy_Rezerwacja" Member="Rezerwacjas" ThisKey="id_pracownika" OtherKey="id_pracownika" Type="Rezerwacja" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rezerwacja" Member="Rezerwacjas">
+    <Type Name="Rezerwacja">
+      <Column Name="id_rezerwacji" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="wolne_pokoje" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="zajete_pokoje" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_klienta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_pracownika" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Rezerwacja_Klient_Pokoj" Member="Klient_Pokojs" ThisKey="id_klienta" OtherKey="id_klienta" Type="Klient_Pokoj" />
+      <Association Name="Klient_Rezerwacja" Member="Klient" ThisKey="id_klienta" OtherKey="id_klienta" Type="Klient" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Pracownicy_Rezerwacja" Member="Pracownicy" ThisKey="id_pracownika" OtherKey="id_pracownika" Type="Pracownicy" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>

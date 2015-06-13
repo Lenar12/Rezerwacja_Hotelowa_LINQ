@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Baza_Danych_LINQ">
+  <DataContextMoniker Name="/Baza_Danych_LINQDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6f1cadd0-ad36-4c30-91f0-bc1e0e7a3c24" absoluteBounds="0.5, 0.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/Baza_Danych_LINQDataContext/Klient" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6a5934d8-bc09-4179-bbbf-51346b01b410" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5ede6e28-57c1-4aca-a9ec-ae4e44804140" absoluteBounds="5.25, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/Baza_Danych_LINQDataContext/Klient_Pokoj" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d538913-1b14-4d78-be0b-b0ae3cb6a9cf" absoluteBounds="5.265, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8fb54214-702a-4689-8c65-a11415e352b3" absoluteBounds="5.75, 2.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/Baza_Danych_LINQDataContext/Pokoj" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2edcf89-dd91-441f-a711-92a00143a9f5" absoluteBounds="5.765, 2.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.5 : 2.375); (6.5 : 1.69399251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Baza_Danych_LINQDataContext/Pokoj/Pokoj_Klient_Pokoj" />
+      <nodes>
+        <classShapeMoniker Id="8fb54214-702a-4689-8c65-a11415e352b3" />
+        <classShapeMoniker Id="5ede6e28-57c1-4aca-a9ec-ae4e44804140" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8a5016dd-acb4-43e2-a03b-b22e9dc68f3f" absoluteBounds="2.25, 3.25, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/Baza_Danych_LINQDataContext/Pracownicy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6fabba9a-1c9e-47f5-a81c-0b23b9966ce5" absoluteBounds="2.265, 3.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ca7a6d80-3889-44fe-bf0a-1f18c7316436" absoluteBounds="2.875, 1, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/Baza_Danych_LINQDataContext/Rezerwacja" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a04d0ad5-3daa-4fbc-8463-c6d611c291ac" absoluteBounds="2.89, 1.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.875 : 1.34699625651042); (5.25 : 1.34699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Baza_Danych_LINQDataContext/Rezerwacja/Rezerwacja_Klient_Pokoj" />
+      <nodes>
+        <classShapeMoniker Id="ca7a6d80-3889-44fe-bf0a-1f18c7316436" />
+        <classShapeMoniker Id="5ede6e28-57c1-4aca-a9ec-ae4e44804140" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 1.82774983723958); (2.875 : 1.82774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Baza_Danych_LINQDataContext/Klient/Klient_Rezerwacja" />
+      <nodes>
+        <classShapeMoniker Id="6f1cadd0-ad36-4c30-91f0-bc1e0e7a3c24" />
+        <classShapeMoniker Id="ca7a6d80-3889-44fe-bf0a-1f18c7316436" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5625 : 3.25); (3.5625 : 2.77089680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Baza_Danych_LINQDataContext/Pracownicy/Pracownicy_Rezerwacja" />
+      <nodes>
+        <classShapeMoniker Id="8a5016dd-acb4-43e2-a03b-b22e9dc68f3f" />
+        <classShapeMoniker Id="ca7a6d80-3889-44fe-bf0a-1f18c7316436" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
