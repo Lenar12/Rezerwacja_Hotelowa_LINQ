@@ -16,7 +16,7 @@ namespace Rezerwacja_Hotelowa_LINQ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Panel_Logowania());
+            Application.Run(new Form1());
         }
     }
 }
